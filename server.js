@@ -44,6 +44,12 @@ app.get('/about', (req, res) => {
   });
 });
 
+app.get('/projects', (req, res) => {
+  res.render('projects.hbs', {
+    pageTitle: 'Projects'
+  });
+});
+
 // bad - json으로 에러 메세지를 전달
 app.get('/bad', (req, res) => {
   res.send({
