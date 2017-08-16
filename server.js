@@ -2,6 +2,7 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+const port = process.env.PORT || 3000;
 var app = express();
 // 특정 디렉토리를 빠르게 로드하는 registerPartials
 hbs.registerPartials(__dirname + '/views/partials');
@@ -17,9 +18,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use((req, res, next) => {
-  res.render('maintenance.hbs');
-});
+// app.use((req, res, next) => {
+//   res.render('maintenance.hbs');
+// });
 
 hbs.registerHelper('getCurrentYear', () => {
   return new Date().getFullYear();
@@ -50,6 +51,6 @@ app.get('/bad', (req, res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log('3000포트로 접속되었습니다.');
+app.listen(port, () => {
+  console.log(`${port} 포트로 접속되었습니다.`);
 }); // 포트 설정
